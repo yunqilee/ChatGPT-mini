@@ -21,11 +21,16 @@ def generate_text():
 
     try:
         client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
-        completion = client.completions.create(model='gpt-3.5-turbo', prompt=prompt)
-
-        return completion.choices[0].text
+        completion = client.chat.completions.create(
+            model='gpt-3.5-turbo',
+            messages=[
+                {'role': 'user', 'content': prompt}
+            ]
+        )
     except Exception as e:
-        return "Something went wrong accessing OpenAI API"
+        return "Something went wrong while accessing OpenAI API"
+
+    return completion.choices[0].message.content
 
 
 if __name__ == '__main__':
