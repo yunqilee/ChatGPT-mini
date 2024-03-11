@@ -34,9 +34,13 @@
             alert("Please input the prompt");
             $('#submit-prompt').prop('disabled', false);
             return;
-        }
+            }
             $('#submit-prompt').prop('disabled', true)
             $('#generated-output').html("Loading...");
+
+            // The following code is to generate streamed output, which can obtain a better
+            // user interation.
+
             var source = new EventSource("/generate_text?prompt="+$('#prompt').val())
             var begin_output = false
             source.onmessage = function (event){
@@ -51,6 +55,10 @@
                     $('#generated-output').html($('#generated-output').html() + event.data)
                 }
             }
+
+            // Uncomment the following code if you want to wait a moment for the full content of the
+            // answer to be returned in its entirety.
+
             // $.ajax({
             //     url:'/generate_text',
             //     type:'POST',
