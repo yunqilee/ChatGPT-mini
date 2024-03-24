@@ -6,10 +6,9 @@
     <form action="/login" method="post">
         <div class="row">
             <div class="col-4">
-                <textarea class="form-control" rows="5" cols="20" name="prompt" id="prompt"></textarea>
-                username: <input type="text" name="username">
+                username: <input type="text" class="form-control" name="username">
                 <br>
-                password: <input type="password" name="password">
+                password: <input type="password" class="form-control" name="password">
                 <br>
                 <div id="login-response"></div>
                 <button type="button" id="submit-btn" class="btn btn-primary">login</button>
@@ -20,4 +19,3 @@
     </form>
 {% endblock %}
 
-{% endblock %}
