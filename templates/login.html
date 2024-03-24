@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h3>user login page</h3>
+    <form action="/login" method="post">
+        <div class="row">
+            <div class="col-4">
+                username: <input type="text" class="form-control" name="username">
+                <br>
+                password: <input type="password" class="form-control" name="password">
+                <br>
+                <div id="login-response"></div>
+                <button type="button" id="submit-btn" class="btn btn-primary">login</button>
+            </div>
+
+        </div>
+
+    </form>
+{% endblock %}
+
